@@ -14,7 +14,7 @@ export class RootNodeComponent implements OnInit {
   public showMenu: boolean = false;
   public nodes: TreeNode[] = [];
   ngOnInit(): void {
-    this.addNode('Root', 'folder');
+
   }
   public addNode = (name: string, type: 'file' | 'folder') => {
     this.nodes.push({

@@ -1,4 +1,4 @@
-<div class="root-node" *ngIf="nodes?.length">
+<div class="root-node" *ngIf="nodes?.length; else addRootButton">
   <div class="root-node-tree" *ngFor="let node of nodes">
     <img
       *ngIf="nodes?.length"
@@ -13,3 +13,8 @@
     <pre>  {{ nodes | json }}</pre>
   </div>
 </div>
+<ng-template #addRootButton>
+  <button class="root-folder-button" (click)="addNode('Root', 'folder')">
+    Add Root Folder
+  </button></ng-template
+>
