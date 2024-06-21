@@ -1,0 +1,19 @@
+.child-node {
+  margin-left: 50px;
+  .child-menu-item {
+    width: fit-content;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    border: 1px solid rgb(119, 119, 119);
+    transform: translate(10px, -40px);
+    img {
+        cursor: pointer;
+    }
+    input {
+      border: none !important;
+      margin-left: 5px;
+    }
+   
+  }
+}
