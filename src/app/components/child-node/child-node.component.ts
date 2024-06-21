@@ -11,6 +11,7 @@ import { NodeActionService } from '../node-action.service';
 export class ChildNodeComponent implements OnInit {
   @Input('node') node!: TreeNode;
   constructor(private service: NodeActionService) { }
+  public showMenu: boolean = false;
   ngOnInit(): void {
   }
   public addNode = (name: string, type: 'file' | 'folder') => {
