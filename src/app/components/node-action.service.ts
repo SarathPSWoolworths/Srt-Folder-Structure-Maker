@@ -7,8 +7,11 @@ export class NodeActionService {
 
   constructor() { }
 
-  
-  public getUniqueId = () => {
+  /**
+   * to generate an unique id for the node
+   * @returns number  
+   */
+  public getUniqueId = (): number => {
     return (Math.floor(new Date().valueOf() * Math.random()));
   }
 }

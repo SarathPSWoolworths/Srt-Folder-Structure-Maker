@@ -14,13 +14,16 @@ export class RootNodeComponent implements OnInit {
   public showMenu: boolean = false;
   public nodes: TreeNode[] = [];
   ngOnInit(): void {
-
   }
-  public addNode = (name: string, type: 'file' | 'folder') => {
+  /**
+  * to create a root node folder
+  * @returns void
+  */
+  public createRootNode = () => {
     this.nodes.push({
       id: this.service.getUniqueId(),
-      type: type,
-      name: name,
+      type: 'folder',
+      name: 'Root',
       nodes: []
     });
   }

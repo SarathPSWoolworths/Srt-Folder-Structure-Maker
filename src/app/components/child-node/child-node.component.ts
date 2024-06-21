@@ -14,6 +14,12 @@ export class ChildNodeComponent implements OnInit {
   public showMenu: boolean = false;
   ngOnInit(): void {
   }
+  /**
+   * to add a node to the root
+   * @param name of the node
+   * @param type of the node
+   * @returns void
+  */
   public addNode = (name: string, type: 'file' | 'folder') => {
     if (!name) {
       return;
@@ -25,6 +31,11 @@ export class ChildNodeComponent implements OnInit {
       nodes: []
     });
   }
+  /**
+   * to remove all children node of the given node, which will remove all the nodes under it.
+   * @param node 
+   * @returns void
+   */
   public removeChildNode = (node: TreeNode) => {
     this.node.nodes = this.node.nodes.filter((_node) => node.id == _node.id);
   }
