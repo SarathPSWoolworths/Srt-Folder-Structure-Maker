@@ -27,4 +27,21 @@ export class RootNodeComponent implements OnInit {
       nodes: []
     });
   }
+
+  /**
+    * to check if it has child node(s)
+    * @param node 
+    * @returns  boolean
+   */
+  public hasChildNodes = (node: TreeNode): boolean => {
+    return node?.nodes?.length > 0;
+  }
+  /**
+   * to check if node created
+   * @param nodes 
+   * @returns  boolean
+  */
+  public isNodeAdded = (nodes: TreeNode[]): boolean => {
+    return nodes?.length > 0;
+  }
 }

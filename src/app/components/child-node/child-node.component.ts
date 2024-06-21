@@ -40,16 +40,29 @@ export class ChildNodeComponent implements OnInit {
     this.node.nodes = this.node.nodes.filter((_node) => node.id == _node.id);
   }
 
-  public isFolder = (node: TreeNode) => {
+  /**
+   * to check if child node is a folder
+   * @param node 
+   * @returns boolean
+  */
+  public isFolder = (node: TreeNode): boolean => {
     return node.type == 'folder';
   }
-
-  public isFile = (node: TreeNode) => {
+  /**
+     * to check if child node is a file
+     * @param node 
+     * @returns boolean
+    */
+  public isFile = (node: TreeNode): boolean => {
     return node.type == 'file';
   }
-
-  public hasChildNodes = (node: TreeNode) => {
-    return node?.nodes?.length;
+  /**
+     * to check if it has child node(s)
+     * @param node 
+     * @returns  boolean
+    */
+  public hasChildNodes = (node: TreeNode): boolean => {
+    return node?.nodes?.length > 0;
   }
 
 }

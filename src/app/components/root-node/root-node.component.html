@@ -1,17 +1,12 @@
-<div class="root-node" *ngIf="nodes?.length; else addRootButton">
+<div class="root-node" *ngIf="isNodeAdded(nodes); else addRootButton">
   <div class="root-node-tree" *ngFor="let node of nodes">
-    <img
-      *ngIf="nodes?.length"
-      src="assets/folder-regular.svg"
-      alt="folder-regular"
-       
-    />
+    <img src="assets/folder-regular.svg" alt="folder icon" />
     <div>{{ node.name }}</div>
     <img
       class="arrow-icon"
-      *ngIf="node?.nodes?.length"
+      *ngIf="hasChildNodes(node)"
       src="assets/down-right.svg"
-      alt="down right arrow"
+      alt="down right arrow icon"
     />
     <app-child-node [node]="node"></app-child-node>
   </div>
