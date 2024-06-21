@@ -9,7 +9,12 @@
       />
     </button>
     <div class="child-menu-item" *ngIf="isFolder(node) && showMenu">
-      <input placeholder="enter child name" type="text" #nodeName />
+      <input
+        placeholder="enter child name"
+        maxlength="12"
+        type="text"
+        #nodeName
+      />
       <button (click)="addNode(nodeName.value, 'folder')" title="Add as Folder">
         <img src="assets/add-folder.svg" alt="add folder button" />
       </button>
