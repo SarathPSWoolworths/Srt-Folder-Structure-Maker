@@ -15,11 +15,11 @@
         type="text"
         #nodeName
       />
-      <button (click)="addNode(nodeName.value, 'folder')" title="Add as Folder">
+      <button (click)="addNode(nodeName.value, 'folder')" title="Add as folder">
         <img src="assets/add-folder.svg" alt="add folder button" />
       </button>
       <button (click)="addNode(nodeName.value, 'file')" alt="add file button">
-        <img title="Add as File" src="assets/add-file.svg" />
+        <img title="Add as file" src="assets/add-file.svg" />
       </button>
       <button (click)="removeChildNode(node)" *ngIf="hasChildNodes(node)">
         <img title="Delete Child" src="assets/delete.svg" alt="delete button" />
