@@ -3,63 +3,52 @@
     <img
       (click)="showMenu = !showMenu"
       class="menu-button"
-      *ngIf="node.type == 'folder'"
+      *ngIf="isFolder(node)"
       [title]="showMenu ? 'close menu' : 'show menu'"
-      [src]="
-        showMenu
-          ? '../../../assets/menu-close.svg'
-          : '../../../assets/menu-open.svg'
-      "
+      [src]="showMenu ? 'assets/menu-close.svg' : 'assets/menu-open.svg'"
       alt="menu-button"
-      width="20px"
     />
-    <div class="child-menu-item" *ngIf="node.type == 'folder' && showMenu">
+    <div class="child-menu-item" *ngIf="isFolder(node) && showMenu">
       <input placeholder="enter child name" type="text" #nodeName />
       <img
         (click)="addNode(nodeName.value, 'folder')"
         title="Add as Folder"
-        src="../../../assets/add-folder.svg"
+        src="assets/add-folder.svg"
         alt="add-folder"
-        width="25px"
       />
       <img
         (click)="addNode(nodeName.value, 'file')"
         title="Add as File"
-        src="../../../assets/add-file.svg"
+        src="assets/add-file.svg"
         alt="add-file"
-        width="25px"
       />
       <img
         (click)="removeChildNode(node)"
-        *ngIf="node?.nodes?.length"
+        *ngIf="hasChildNodes(node)"
         title="Delete Child"
-        src="../../../assets/delete.svg"
+        src="assets/delete.svg"
         alt="delete"
-        width="25px"
       />
     </div>
   </div>
-  <div class="child-node-item" *ngIf="node?.nodes?.length">
+  <div class="child-node-item" *ngIf="hasChildNodes(node)">
     <div class="child-node-content" *ngFor="let node of node.nodes">
       <img
-        *ngIf="node.type == 'folder'"
-        src="../../../assets/folder-regular.svg"
+        *ngIf="isFolder(node)"
+        src="assets/folder-regular.svg"
         alt="folder-regular"
-        width="25px"
       />
       <img
-        *ngIf="node.type == 'file'"
-        src="../../../assets/file-regular.svg"
+        *ngIf="isFile(node)"
+        src="assets/file-regular.svg"
         alt="file-regular"
-        width="25px"
       />
       <div>{{ node.name }}</div>
       <img
         class="arrow-icon"
-        *ngIf="node?.nodes?.length"
-        src="../../../assets/down-right.svg"
+        *ngIf="hasChildNodes(node)"
+        src="assets/down-right.svg"
         alt="down-right"
-        width="25px"
       />
       <app-child-node [node]="node"></app-child-node>
     </div>

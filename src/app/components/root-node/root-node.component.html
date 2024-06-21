@@ -2,17 +2,16 @@
   <div class="root-node-tree" *ngFor="let node of nodes">
     <img
       *ngIf="nodes?.length"
-      src="../../../assets/folder-regular.svg"
+      src="assets/folder-regular.svg"
       alt="folder-regular"
-      width="30px"
+       
     />
     <div>{{ node.name }}</div>
     <img
       class="arrow-icon"
       *ngIf="node?.nodes?.length"
-      src="../../../assets/down-right.svg"
-      alt="down-right"
-      width="25px"
+      src="assets/down-right.svg"
+      alt="down right arrow"
     />
     <app-child-node [node]="node"></app-child-node>
   </div>

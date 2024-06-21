@@ -40,4 +40,16 @@ export class ChildNodeComponent implements OnInit {
     this.node.nodes = this.node.nodes.filter((_node) => node.id == _node.id);
   }
 
+  public isFolder = (node: TreeNode) => {
+    return node.type == 'folder';
+  }
+
+  public isFile = (node: TreeNode) => {
+    return node.type == 'file';
+  }
+
+  public hasChildNodes = (node: TreeNode) => {
+    return node?.nodes?.length;
+  }
+
 }
