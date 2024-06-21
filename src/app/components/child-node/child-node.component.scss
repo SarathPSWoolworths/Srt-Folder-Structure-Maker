@@ -32,6 +32,9 @@
       input {
         border: none !important;
         margin-left: 5px;
+        &:focus {
+          outline: none;
+        }
       }
     }
   }
