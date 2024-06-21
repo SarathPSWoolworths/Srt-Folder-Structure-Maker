@@ -1,16 +1,17 @@
 <div class="child-node">
   <div class="child-menu">
     <img
+      (click)="showMenu = !showMenu"
       class="menu-button"
       *ngIf="node.type == 'folder'"
+      [title]="showMenu ? 'close menu' : 'show menu'"
       [src]="
         showMenu
           ? '../../../assets/menu-close.svg'
           : '../../../assets/menu-open.svg'
       "
-      alt="menu-dots"
+      alt="menu-button"
       width="25px"
-      (click)="showMenu = !showMenu"
     />
     <div class="child-menu-item" *ngIf="node.type == 'folder' && showMenu">
       <input placeholder="enter child name" type="text" #nodeName />
@@ -38,23 +39,21 @@
       />
     </div>
   </div>
-  <div *ngIf="node?.nodes?.length">
+  <div class="child-node-item" *ngIf="node?.nodes?.length">
     <div *ngFor="let node of node.nodes">
-      <div>
-        <img
-          *ngIf="node.type == 'folder'"
-          src="../../../assets/folder-regular.svg"
-          alt="folder-regular"
-          width="25px"
-        />
-        <img
-          *ngIf="node.type == 'file'"
-          src="../../../assets/file-regular.svg"
-          alt="file-regular"
-          width="25px"
-        />
-        <div>{{ node.name }}</div>
-      </div>
+      <img
+        *ngIf="node.type == 'folder'"
+        src="../../../assets/folder-regular.svg"
+        alt="folder-regular"
+        width="25px"
+      />
+      <img
+        *ngIf="node.type == 'file'"
+        src="../../../assets/file-regular.svg"
+        alt="file-regular"
+        width="25px"
+      />
+      <div>{{ node.name }}</div>
       <app-child-node [node]="node"></app-child-node>
     </div>
   </div>

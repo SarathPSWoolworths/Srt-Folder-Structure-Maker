@@ -1,15 +1,13 @@
 .child-node {
   margin-left: 50px;
+  margin-top: 20px;
   img {
     cursor: pointer;
   }
   .child-menu{
     display: flex;
     column-gap: 5px;
-    transform: translate(0px, -50px);
-    .menu-button {
-      transform: translate(-25px, -10px);
-    }
+    transform: translate(-20px, -75px);
   }
   .child-menu-item {
     width: fit-content;
