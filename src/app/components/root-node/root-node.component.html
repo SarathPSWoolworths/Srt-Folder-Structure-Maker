@@ -7,6 +7,13 @@
       width="30px"
     />
     <div>{{ node.name }}</div>
+    <img
+      class="arrow-icon"
+      *ngIf="node?.nodes?.length"
+      src="../../../assets/down-right.svg"
+      alt="down-right"
+      width="25px"
+    />
     <app-child-node [node]="node"></app-child-node>
   </div>
   <div>
