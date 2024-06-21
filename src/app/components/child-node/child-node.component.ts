@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TreeNode } from '../node.model';
 import { NodeActionService } from '../node-action.service';
-
-
 @Component({
   selector: 'app-child-node',
   templateUrl: './child-node.component.html',
