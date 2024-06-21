@@ -5,16 +5,16 @@
       <input placeholder="enter child name" type="text" #nodeName />
       <img
         (click)="addNode(nodeName.value, 'folder')"
-        title="Add Folder"
+        title="Add as Folder"
         src="../../../assets/add-folder.svg"
-        alt="Icon description"
+        alt="add-folder"
         width="25px"
       />
       <img
         (click)="addNode(nodeName.value, 'file')"
-        title="Add File"
+        title="Add as File"
         src="../../../assets/add-file.svg"
-        alt="Icon description"
+        alt="add-file"
         width="25px"
       />
       <img
@@ -22,7 +22,7 @@
         *ngIf="node?.nodes?.length"
         title="Delete Child"
         src="../../../assets/delete.svg"
-        alt="Icon description"
+        alt="delete"
         width="25px"
       />
     </div>
@@ -33,13 +33,13 @@
         <img
           *ngIf="node.type == 'folder'"
           src="../../../assets/folder-regular.svg"
-          alt="Icon description"
+          alt="folder-regular"
           width="25px"
         />
         <img
           *ngIf="node.type == 'file'"
           src="../../../assets/file-regular.svg"
-          alt="Icon description"
+          alt="file-regular"
           width="25px"
         />
         <div>{{ node.name }}</div>

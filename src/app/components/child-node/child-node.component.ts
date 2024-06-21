@@ -10,7 +10,6 @@ import { NodeActionService } from '../node-action.service';
 })
 export class ChildNodeComponent implements OnInit {
   @Input('node') node!: TreeNode;
-  @Input('showMenu') showMenu: boolean = false;
   constructor(private service: NodeActionService) { }
   ngOnInit(): void {
   }

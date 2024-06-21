@@ -3,11 +3,11 @@
     <img
       *ngIf="nodes?.length"
       src="../../../assets/folder-regular.svg"
-      alt="Icon description"
+      alt="folder-regular"
       width="30px"
     />
     <div>{{ node.name }}</div>
-    <app-child-node [node]="node" [showMenu]="showMenu"></app-child-node>
+    <app-child-node [node]="node"></app-child-node>
   </div>
   <div>
     <pre>  {{ nodes | json }}</pre>
