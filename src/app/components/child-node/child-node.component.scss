@@ -1,24 +1,24 @@
 .child-node {
   margin-left: 50px;
   margin-top: 20px;
-  img {
-    cursor: pointer;
-  }
-  .child-menu{
+  .child-menu {
     display: flex;
     column-gap: 5px;
     transform: translate(-20px, -75px);
-  }
-  .child-menu-item {
-    width: fit-content;
-    display: flex;
-    column-gap: 10px;
-    align-items: center;
-    border: 1px solid rgb(119, 119, 119);
-    border-radius: 5px;
-    input {
-      border: none !important;
-      margin-left: 5px;
+    img {
+      cursor: pointer;
+    }
+    .child-menu-item {
+      width: fit-content;
+      display: flex;
+      column-gap: 10px;
+      align-items: center;
+      border: 1px solid rgb(119, 119, 119);
+      border-radius: 5px;
+      input {
+        border: none !important;
+        margin-left: 5px;
+      }
     }
   }
 }
