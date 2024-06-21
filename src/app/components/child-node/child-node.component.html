@@ -1,13 +1,13 @@
 <div class="child-node">
   <div class="child-menu">
-    <img
-      (click)="showMenu = !showMenu"
-      class="menu-button"
-      *ngIf="isFolder(node)"
-      [title]="showMenu ? 'close menu' : 'show menu'"
-      [src]="showMenu ? 'assets/menu-close.svg' : 'assets/menu-open.svg'"
-      alt="show menu button"
-    />
+    <button *ngIf="isFolder(node)" (click)="showMenu = !showMenu">
+      <img
+        class="menu-button"
+        [title]="showMenu ? 'close menu' : 'show menu'"
+        [src]="showMenu ? 'assets/menu-close.svg' : 'assets/menu-open.svg'"
+        alt="show menu button"
+      />
+    </button>
     <div class="child-menu-item" *ngIf="isFolder(node) && showMenu">
       <input placeholder="enter child name" type="text" #nodeName />
       <button (click)="addNode(nodeName.value, 'folder')" title="Add as Folder">
