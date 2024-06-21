@@ -29,13 +29,11 @@
   <div class="child-node-item" *ngIf="hasChildNodes(node)">
     <div class="child-node-content" *ngFor="let node of node.nodes">
       <img
-        *ngIf="isFolder(node)"
-        src="assets/folder-regular.svg"
-        alt="folder-regular"
-      />
-      <img
-        *ngIf="isFile(node)"
-        src="assets/file-regular.svg"
+        [src]="
+          isFolder(node)
+            ? 'assets/folder-regular.svg'
+            : 'assets/file-regular.svg'
+        "
         alt="file-regular"
       />
       <div>{{ node.name }}</div>
@@ -45,6 +43,7 @@
         src="assets/down-right.svg"
         alt="down-right"
       />
+      <br *ngIf="isFile(node)" />
       <app-child-node [node]="node"></app-child-node>
     </div>
   </div>
