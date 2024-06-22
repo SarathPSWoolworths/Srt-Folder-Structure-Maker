@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TreeNode } from '../node.model';
-import { NodeActionService } from '../node-action.service';
-
+import { NodeActionService } from '../../services/node-action.service';
+import { TreeNode } from '../../models/node.model';
 
 @Component({
   selector: 'app-root-node',
