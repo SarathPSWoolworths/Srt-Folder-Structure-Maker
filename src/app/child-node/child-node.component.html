@@ -1,6 +1,7 @@
 <div class="child-node">
   <div class="child-menu">
-    <button *ngIf="isFolder(node)" (click)="showMenu = !showMenu">
+    @if(isFolder(node)){
+    <button (click)="showMenu = !showMenu">
       <img
         class="menu-button"
         [title]="showMenu ? 'close menu' : 'show menu'"
@@ -8,7 +9,8 @@
         alt="show menu button"
       />
     </button>
-    <div class="child-menu-item" *ngIf="isFolder(node) && showMenu">
+    } @if(isFolder(node) && showMenu){
+    <div class="child-menu-item">
       <input
         placeholder="enter child name"
         maxlength="12"
@@ -21,30 +23,31 @@
       <button (click)="addNode(nodeName.value, 'file')" alt="add file button">
         <img title="Add as file" src="add-file.svg" />
       </button>
-      <button (click)="removeChildNode(node)" *ngIf="hasChildNodes(node)">
+      @if(hasChildNodes(node)){
+      <button (click)="removeChildNode(node)">
         <img title="Delete Child" src="delete.svg" alt="delete button" />
       </button>
+      }
     </div>
+    }
   </div>
-  <div class="child-node-item" *ngIf="hasChildNodes(node)">
-    <div class="child-node-content" *ngFor="let node of node.nodes">
+  @if(hasChildNodes(node)){
+  <div class="child-node-item">
+    @for (node of node.nodes; track node) {
+    <div class="child-node-content">
       <img
-        [src]="
-          isFolder(node)
-            ? 'folder-regular.svg'
-            : 'file-regular.svg'
-        "
+        [src]="isFolder(node) ? 'folder-regular.svg' : 'file-regular.svg'"
         alt="file-regular"
       />
       <div>{{ node.name }}</div>
-      <img
-        class="arrow-icon"
-        *ngIf="hasChildNodes(node)"
-        src="down-right.svg"
-        alt="down-right"
-      />
-      <br *ngIf="isFile(node)" />
+      @if(hasChildNodes(node)){
+      <img class="arrow-icon" *ngIf="" src="down-right.svg" alt="down-right" />
+      } @if(isFile(node)){
+      <br />
+      }
       <app-child-node [node]="node"></app-child-node>
     </div>
+    }
   </div>
+  }
 </div>

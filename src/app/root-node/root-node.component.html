@@ -1,21 +1,23 @@
-<div class="root-node" *ngIf="isNodeAdded(nodes); else addRootButton">
-  <div class="root-node-tree" *ngFor="let node of nodes">
+@if(isNodeAdded(nodes)) {
+<div class="root-node">
+  @for (node of nodes; track node) {
+  <div class="root-node-tree">
     <img src="folder-regular.svg" alt="folder icon" />
     <div>{{ node.name }}</div>
-    <img
-      class="arrow-icon"
-      *ngIf="hasChildNodes(node)"
-      src="down-right.svg"
-      alt="down right arrow icon"
-    />
+    @if(hasChildNodes(node)) {
+    <img class="arrow-icon" src="down-right.svg" alt="down right arrow icon" />
+    }
     <app-child-node [node]="node"></app-child-node>
   </div>
+  }
   <div>
     <pre>  {{ nodes | json }}</pre>
   </div>
 </div>
-<ng-template #addRootButton>
+} @else {
+<div>
   <button class="root-folder-button" (click)="createRootNode()">
     Add Root Folder
-  </button></ng-template
->
+  </button>
+</div>
+}
