@@ -1,1 +1,50 @@
-<p>child-node works!</p>
+<div class="child-node">
+  <div class="child-menu">
+    <button *ngIf="isFolder(node)" (click)="showMenu = !showMenu">
+      <img
+        class="menu-button"
+        [title]="showMenu ? 'close menu' : 'show menu'"
+        [src]="showMenu ? 'menu-close.svg' : 'menu-open.svg'"
+        alt="show menu button"
+      />
+    </button>
+    <div class="child-menu-item" *ngIf="isFolder(node) && showMenu">
+      <input
+        placeholder="enter child name"
+        maxlength="12"
+        type="text"
+        #nodeName
+      />
+      <button (click)="addNode(nodeName.value, 'folder')" title="Add as folder">
+        <img src="add-folder.svg" alt="add folder button" />
+      </button>
+      <button (click)="addNode(nodeName.value, 'file')" alt="add file button">
+        <img title="Add as file" src="add-file.svg" />
+      </button>
+      <button (click)="removeChildNode(node)" *ngIf="hasChildNodes(node)">
+        <img title="Delete Child" src="delete.svg" alt="delete button" />
+      </button>
+    </div>
+  </div>
+  <div class="child-node-item" *ngIf="hasChildNodes(node)">
+    <div class="child-node-content" *ngFor="let node of node.nodes">
+      <img
+        [src]="
+          isFolder(node)
+            ? 'folder-regular.svg'
+            : 'file-regular.svg'
+        "
+        alt="file-regular"
+      />
+      <div>{{ node.name }}</div>
+      <img
+        class="arrow-icon"
+        *ngIf="hasChildNodes(node)"
+        src="down-right.svg"
+        alt="down-right"
+      />
+      <br *ngIf="isFile(node)" />
+      <app-child-node [node]="node"></app-child-node>
+    </div>
+  </div>
+</div>
