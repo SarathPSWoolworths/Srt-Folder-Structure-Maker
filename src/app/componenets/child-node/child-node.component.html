@@ -49,7 +49,12 @@
         class="button-img"
         [src]="node.type === 'file' ? 'file-regular.svg' : 'folder-regular.svg'"
       />
-      <input class="node-name" maxlength="20" #nodeName />
+      <input
+        class="node-name"
+        placeholder="enter child name"
+        maxlength="20"
+        #nodeName
+      />
 
       <button
         title="update name"
