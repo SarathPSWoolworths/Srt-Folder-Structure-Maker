@@ -7,6 +7,11 @@
   align-items: center;
   justify-content: center;
   outline: none;
+
+  &:hover {
+    outline: 1px solid #263238;
+  }
+
   &.menu-node {
     outline: 1px solid #263238;
   }
@@ -19,35 +24,41 @@
     overflow: hidden;
     outline: none;
   }
+
   .node-items {
     display: flex;
     justify-content: center;
     column-gap: 10px;
     align-items: center;
+
     .name {
       font-weight: 500;
     }
+
+    &:hover .node-menu-button {
+      display: flex;
+      justify-content: center;
+      column-gap: 10px;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .node-menu-button {
+      display: flex;
+      justify-content: center;
+      column-gap: 10px;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.5s ease;
+    }
   }
-  .node-menu-button {
-    display: flex;
-    justify-content: center;
-    column-gap: 10px;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s ease;
-  }
-  .node-items:hover .node-menu-button {
-    display: flex;
-    justify-content: center;
-    column-gap: 10px;
-    visibility: visible;
-    opacity: 1;
-  }
+
   .choose-file-folder {
     display: flex;
     justify-content: center;
     column-gap: 10px;
     align-items: center;
+
     button.file-folder-button {
       background: #263238;
       padding: 5px 10px;
@@ -57,24 +68,26 @@
       cursor: pointer;
     }
   }
+
   img.button-img {
     height: 25px;
   }
+
   input.node-name {
-    border-color: black;
-    border-radius: 2px;
     font-size: 12px;
     padding: 4px 8px;
   }
 }
 
 .child {
-  margin-left: 2em;
+  padding-left: 2em;
+
   .node-container {
     border-left: 2px solid #263238;
     display: flex;
     align-items: center;
     position: relative;
+
     &:before {
       content: "";
       display: inline-block;
