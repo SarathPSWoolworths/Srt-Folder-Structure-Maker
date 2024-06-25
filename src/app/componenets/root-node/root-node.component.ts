@@ -14,6 +14,9 @@ export class RootNodeComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * to add root node
+   * */
   addNode(): void {
     this.nodes.push({
       id: this.helperService.getUniqueId(),
@@ -21,6 +24,10 @@ export class RootNodeComponent implements OnInit {
     });
   }
 
+  /**
+   * to filter out all the child nodes
+   * @param event
+   */
   removeChildNode(event: any): void {
     this.nodes = this.nodes.filter((node) => node.id !== event);
   }

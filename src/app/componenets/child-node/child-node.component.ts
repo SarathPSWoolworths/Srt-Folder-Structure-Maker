@@ -20,7 +20,10 @@ export class ChildNodeComponent implements OnInit {
   @Output('removeEvent') removeEvent: EventEmitter<any> = new EventEmitter();
   constructor(private helperService: NodeHelperService) {}
   ngOnInit(): void {}
-  addNode(): void {
+  /**
+   * to add a unset node to child
+   */
+  addUnsetNode(): void {
     if (!this.node.children) {
       this.node.children = [];
     }
@@ -29,17 +32,33 @@ export class ChildNodeComponent implements OnInit {
       type: 'unset',
     });
   }
-  updateNodeType(type: 'unset' | 'folder' | 'file' | null): void {
+  /**
+   * to update node type
+   * @param type should be 'folder' or 'file'
+   */
+  updateNodeType(type: 'file' | 'folder'): void {
     this.node.type = type;
   }
+  /**
+   * to update the file/folder name
+   * @param value should be string without white spaces
+   */
   updateNodeName(value: string): void {
-    if (value && value.trim()) {
-      this.node.name = value.trim();
+    value = value.trim();
+    if (value) {
+      this.node.name = value;
     }
   }
+  /**
+   * to callthe remove event of the parent node
+   */
   removeNode(): void {
     this.removeEvent.emit(this.node.id);
   }
+  /**
+   * to filter out all the child nodes
+   * @param event
+   */
   removeChildNode(event: any): void {
     if (!this.node.children) {
       this.node.children = [];

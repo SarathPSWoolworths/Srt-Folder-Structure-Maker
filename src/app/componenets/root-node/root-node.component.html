@@ -1,11 +1,16 @@
-<div class="root-nodes">
-  <button (click)="addNode()">Add Folder to Root</button>
-  <div class="child-nodes">
-    @for (node of nodes; track node) {
-    <app-child-node
-      [node]="node"
-      (removeEvent)="removeChildNode($event)"
-    ></app-child-node>
-    }
+<div class="root">
+  <div class="root-nodes">
+    <button (click)="addNode()">Add Folder to Root</button>
+    <div class="child-nodes">
+      @for (node of nodes; track node) {
+      <app-child-node
+        [node]="node"
+        (removeEvent)="removeChildNode($event)"
+      ></app-child-node>
+      }
+    </div>
+  </div>
+  <div class="root-json">
+    <pre>{{ nodes | json }}</pre>
   </div>
 </div>

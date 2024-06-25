@@ -6,10 +6,12 @@
   width: fit-content;
   align-items: center;
   justify-content: center;
-  .unset-node {
+  outline: none;
+  &.menu-node {
     outline: 1px solid #263238;
   }
-  button.transparent-button {
+
+  button.transparent {
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
@@ -22,6 +24,24 @@
     justify-content: center;
     column-gap: 10px;
     align-items: center;
+    .name {
+      font-weight: 500;
+    }
+  }
+  .node-menu-button {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease;
+  }
+  .node-items:hover .node-menu-button {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    visibility: visible;
+    opacity: 1;
   }
   .choose-file-folder {
     display: flex;
@@ -49,7 +69,7 @@
 }
 
 .child {
-  margin-left: 32px;
+  margin-left: 2em;
   .node-container {
     border-left: 2px solid #263238;
     display: flex;
@@ -57,14 +77,13 @@
     position: relative;
     &:before {
       content: "";
+      display: inline-block;
       position: relative;
-      top: -0.3em;
+      top: -0.5em;
       height: 1em;
-      width: 12px;
+      width: 10px;
       color: white;
       border-bottom: 2px solid #263238;
-      content: "";
-      display: inline-block;
     }
   }
 }
