@@ -1,23 +1,11 @@
-@if(isNodeAdded(nodes)) {
-<div class="root-node">
-  @for (node of nodes; track node) {
-  <div class="root-node-tree">
-    <img src="folder-regular.svg" alt="folder icon" />
-    <div>{{ node.name }}</div>
-    @if(hasChildNodes(node)) {
-    <img class="arrow-icon" src="down-right.svg" alt="down right arrow icon" />
+<div class="root-nodes">
+  <button (click)="addNode()">Add Folder to Root</button>
+  <div class="child-nodes">
+    @for (node of nodes; track node) {
+    <app-child-node
+      [node]="node"
+      (removeEvent)="removeChildNode($event)"
+    ></app-child-node>
     }
-    <app-child-node [node]="node"></app-child-node>
-  </div>
-  }
-  <div>
-    <pre>  {{ nodes | json }}</pre>
   </div>
 </div>
-} @else {
-<div>
-  <button class="root-folder-button" (click)="createRootNode()">
-    Add Root Folder
-  </button>
-</div>
-}

@@ -4,7 +4,10 @@ nav {
   align-items: center;
   column-gap: 10px;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 5px;
   background: #263238;
   color: white;
+  img {
+    width: 25px;
+  }
 }

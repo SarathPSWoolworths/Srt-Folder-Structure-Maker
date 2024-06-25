@@ -1,64 +1,51 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { TreeNode } from '../../models/node.model';
-import { NodeActionService } from '../../services/node-action.service';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { NodeModel } from '../../models/node.model';
+import { NodeHelperService } from '../../services/node-helper.service';
 @Component({
   selector: 'app-child-node',
   templateUrl: './child-node.component.html',
   styleUrls: ['./child-node.component.scss'],
 })
 export class ChildNodeComponent implements OnInit {
-  @Input('node') node!: TreeNode;
-  constructor(private service: NodeActionService) {}
-  public showMenu: boolean = false;
+  @Input('node') node!: NodeModel;
+  @Output('removeEvent') removeEvent: EventEmitter<any> = new EventEmitter();
+  constructor(private helperService: NodeHelperService) {}
   ngOnInit(): void {}
-  /**
-   * to add a node to the root
-   * @param name of the node
-   * @param type of the node
-   * @returns void
-   */
-  public addNode = (name: string, type: 'file' | 'folder') => {
-    if (!name) {
-      return;
+  addNode(): void {
+    if (!this.node.children) {
+      this.node.children = [];
     }
-    this.node.nodes.push({
-      id: this.service.getUniqueId(),
-      type: type,
-      name: name,
-      nodes: [],
+    this.node.children.push({
+      id: this.helperService.getUniqueId(),
+      type: 'unset',
     });
-  };
-  /**
-   * to remove all children node of the given node, which will remove all the nodes under it.
-   * @param node
-   * @returns void
-   */
-  public removeChildNode = (node: TreeNode) => {
-    this.node.nodes = this.node.nodes.filter((_node) => node.id == _node.id);
-  };
-
-  /**
-   * to check if child node is a folder
-   * @param node
-   * @returns boolean
-   */
-  public isFolder = (node: TreeNode): boolean => {
-    return node.type == 'folder';
-  };
-  /**
-   * to check if child node is a file
-   * @param node
-   * @returns boolean
-   */
-  public isFile = (node: TreeNode): boolean => {
-    return node.type == 'file';
-  };
-  /**
-   * to check if it has child node(s)
-   * @param node
-   * @returns  boolean
-   */
-  public hasChildNodes = (node: TreeNode): boolean => {
-    return node?.nodes?.length > 0;
-  };
+  }
+  updateNodeType(type: 'unset' | 'folder' | 'file' | null): void {
+    this.node.type = type;
+  }
+  updateNodeName(value: string): void {
+    if (value && value.trim()) {
+      this.node.name = value.trim();
+    }
+  }
+  removeNode(): void {
+    this.removeEvent.emit(this.node.id);
+  }
+  removeChildNode(event: any): void {
+    if (!this.node.children) {
+      this.node.children = [];
+    }
+    this.node.children = this.node.children.filter(
+      (child) => child.id !== event
+    );
+  }
 }

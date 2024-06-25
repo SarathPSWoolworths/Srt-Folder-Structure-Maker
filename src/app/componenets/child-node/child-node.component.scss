@@ -1,41 +1,70 @@
-.child-node {
-  margin-left: 50px;
-  margin-top: 20px;
-  // .child-node-item {
-  //   .child-node-content {
-  //     padding-left: 10px;
-  //     border-left: 1px solid gray;
-  //   }
-  // }
-  .child-menu {
+.node {
+  display: flex;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 4px;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  .unset-node {
+    outline: 1px solid #263238;
+  }
+  button.transparent-button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+  }
+  .node-items {
     display: flex;
-    column-gap: 5px;
-    transform: translate(-20px, -75px);
-    img {
+    justify-content: center;
+    column-gap: 10px;
+    align-items: center;
+  }
+  .choose-file-folder {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    align-items: center;
+    button.file-folder-button {
+      background: #263238;
+      padding: 5px 10px;
+      color: white;
+      border: 1px solid transparent;
+      border-radius: 2px;
       cursor: pointer;
     }
-    button {
-      background-color: transparent;
-      background-repeat: no-repeat;
-      border: none;
-      cursor: pointer;
-      overflow: hidden;
-      outline: none;
-    }
-    .child-menu-item {
-      width: fit-content;
-      display: flex;
-      column-gap: 10px;
-      align-items: center;
-      border: 1px solid rgb(119, 119, 119);
-      border-radius: 5px;
-      input {
-        border: none !important;
-        margin-left: 5px;
-        &:focus {
-          outline: none;
-        }
-      }
+  }
+  img.button-img {
+    height: 25px;
+  }
+  input.node-name {
+    border-color: black;
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+.child {
+  margin-left: 32px;
+  .node-container {
+    border-left: 2px solid #263238;
+    display: flex;
+    align-items: center;
+    position: relative;
+    &:before {
+      content: "";
+      position: relative;
+      top: -0.3em;
+      height: 1em;
+      width: 12px;
+      color: white;
+      border-bottom: 2px solid #263238;
+      content: "";
+      display: inline-block;
     }
   }
 }

@@ -1,53 +1,58 @@
-<div class="child-node">
-  <div class="child-menu">
-    @if(isFolder(node)){
-    <button (click)="showMenu = !showMenu">
+<div class="node-container">
+  <div class="node" [ngClass]="{ 'unset-node': node.type === 'unset' }">
+    @if(node.type === 'unset') {
+    <div class="choose-file-folder">
+      <button class="file-folder-button" (click)="updateNodeType('folder')">
+        Add Folder
+      </button>
+      <button class="file-folder-button" (click)="updateNodeType('file')">
+        Add File
+      </button>
+    </div>
+    } @if(node.type === 'file' || node.type === 'folder') { @if(node.name) {
+    <div class="node-items">
       <img
-        class="menu-button"
-        [title]="showMenu ? 'close menu' : 'show menu'"
-        [src]="showMenu ? 'menu-close.svg' : 'menu-open.svg'"
-        alt="show menu button"
+        class="button-img"
+        [src]="node.type === 'file' ? 'file-regular.svg' : 'folder-regular.svg'"
       />
-    </button>
-    } @if(isFolder(node) && showMenu){
-    <div class="child-menu-item">
-      <input
-        placeholder="enter child name"
-        maxlength="12"
-        type="text"
-        #nodeName
-      />
-      <button (click)="addNode(nodeName.value, 'folder')" title="Add as folder">
-        <img src="add-folder.svg" alt="add folder button" />
-      </button>
-      <button (click)="addNode(nodeName.value, 'file')" alt="add file button">
-        <img title="Add as file" src="add-file.svg" />
-      </button>
-      @if(hasChildNodes(node)){
-      <button (click)="removeChildNode(node)">
-        <img title="Delete Child" src="delete.svg" alt="delete button" />
+      <span class="name">{{ node.name }}</span>
+      @if(node.type === 'folder'){
+      <button class="transparent-button" (click)="addNode()">
+        <img class="button-img" src="add-icon.svg" />
       </button>
       }
+      <button class="transparent-button" (click)="removeNode()">
+        <img class="button-img" src="delete.svg" />
+      </button>
     </div>
-    }
-  </div>
-  @if(hasChildNodes(node)){
-  <div class="child-node-item">
-    @for (node of node.nodes; track node) {
-    <div class="child-node-content">
+    } @else {
+    <div class="node-items">
       <img
-        [src]="isFolder(node) ? 'folder-regular.svg' : 'file-regular.svg'"
-        alt="file-regular"
+        class="button-img"
+        [src]="node.type === 'file' ? 'file-regular.svg' : 'folder-regular.svg'"
       />
-      <div>{{ node.name }}</div>
-      @if(hasChildNodes(node)){
-      <img class="arrow-icon" src="down-right.svg" alt="down-right" />
-      } @if(isFile(node)){
-      <br />
-      }
-      <app-child-node [node]="node"></app-child-node>
+      <input class="node-name" #nodeName />
+      <button
+        class="transparent-button"
+        (click)="updateNodeName(nodeName.value)"
+      >
+        <img class="button-img" src="tick.svg" />
+      </button>
+      <button class="transparent-button" (click)="removeNode()">
+        <img class="button-img" src="close.svg" />
+      </button>
     </div>
-    }
+    } }
   </div>
+</div>
+
+@if(node.children?.length) {
+<div class="child">
+  @for (child of node.children; track child) {
+  <app-child-node
+    [node]="child"
+    (removeEvent)="removeChildNode($event)"
+  ></app-child-node>
   }
 </div>
+}

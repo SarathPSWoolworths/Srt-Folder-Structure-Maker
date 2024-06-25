@@ -1,18 +1,14 @@
-.root-node {
-  column-gap: 100px;
-  display: flex;
-  margin-left: 20px;
-  .root-node-tree {
-    width: 100vw;
-  }
+.root-nodes {
+  padding: 20px;
 }
-.root-folder-button {
-  margin-left: 20px;
+button {
+  background: #263238;
+  padding: 10px 20px;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 4px;
   cursor: pointer;
-  font-weight: 500;
-  height: 36px;
-  font-size: 14px;
-  color: #ffffff;
-  background-color: #263238;
-  padding: 0 18px;
+}
+.child-nodes {
+  margin: 24px 0;
 }
