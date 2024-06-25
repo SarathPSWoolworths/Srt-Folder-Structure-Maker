@@ -80,25 +80,23 @@
 }
 
 .child-node {
-  padding-left: 24px;
+  padding-left: 1.8em;
+}
 
-  .node-container {
-    border-left: 2px solid #263238;
-    display: flex;
-    align-items: center;
+.node-container {
+  border-left: 2px solid #263238;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:before {
+    content: "";
+    display: inline-block;
     position: relative;
-
-    &:before {
-      content: "";
-      display: inline-block;
-      position: relative;
-      top: -0.5em;
-      height: 15px;
-      width: 10px;
-      color: white;
-      border-bottom: 2px solid #263238;
-    }
+    top: -0.5em;
+    height: 15px;
+    width: 10px;
+    color: white;
+    border-bottom: 2px solid #263238;
   }
-
-
 }
