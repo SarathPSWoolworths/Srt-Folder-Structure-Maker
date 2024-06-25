@@ -1,12 +1,12 @@
-.node {
+.main-node {
   display: flex;
-  padding: 8px;
-  margin: 8px;
-  border-radius: 4px;
+  padding: 5px;
+  border-radius: 2px;
   width: fit-content;
   align-items: center;
   justify-content: center;
   outline: none;
+  margin: 5px;
 
   &:hover {
     outline: 1px solid #263238;
@@ -29,18 +29,9 @@
     display: flex;
     justify-content: center;
     column-gap: 10px;
-    align-items: center;
 
     .name {
       font-weight: 500;
-    }
-
-    &:hover .node-menu-button {
-      display: flex;
-      justify-content: center;
-      column-gap: 10px;
-      visibility: visible;
-      opacity: 1;
     }
 
     .node-menu-button {
@@ -50,6 +41,14 @@
       visibility: hidden;
       opacity: 0;
       transition: visibility 0s, opacity 0.5s ease;
+    }
+
+    &:hover .node-menu-button {
+      display: flex;
+      justify-content: center;
+      column-gap: 10px;
+      visibility: visible;
+      opacity: 1;
     }
   }
 
@@ -79,8 +78,8 @@
   }
 }
 
-.child {
-  padding-left: 2em;
+.child-node {
+  padding-left: 28px;
 
   .node-container {
     border-left: 2px solid #263238;
@@ -93,10 +92,12 @@
       display: inline-block;
       position: relative;
       top: -0.5em;
-      height: 1em;
+      height: 15px;
       width: 10px;
       color: white;
       border-bottom: 2px solid #263238;
     }
   }
+
+
 }

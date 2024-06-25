@@ -3,10 +3,7 @@
     <button (click)="addNode()">Add Folder to Root</button>
     <div class="child-nodes">
       @for (node of nodes; track node) {
-      <app-child-node
-        [node]="node"
-        (removeEvent)="removeChildNode($event)"
-      ></app-child-node>
+      <child-node [node]="node" (removeEvent)="removeNode($event)"></child-node>
       }
     </div>
   </div>

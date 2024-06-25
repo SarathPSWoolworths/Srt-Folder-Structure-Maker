@@ -1,5 +1,5 @@
 <div class="node-container">
-  <div class="node" [ngClass]="{ 'menu-node': !node.name }">
+  <div class="main-node" [ngClass]="{ 'menu-node': !node.name }">
     @if(node.type === 'unset') {
     <div class="choose-file-folder">
       <button
@@ -37,7 +37,7 @@
         <button
           class="transparent"
           title="delete this node"
-          (click)="removeNode()"
+          (click)="removeThisNode()"
         >
           <img class="button-img" src="delete.svg" />
         </button>
@@ -66,7 +66,7 @@
       <button
         class="transparent"
         title="remove this node"
-        (click)="removeNode()"
+        (click)="removeThisNode()"
       >
         <img class="button-img" src="close.svg" />
       </button>
@@ -77,12 +77,12 @@
 </div>
 
 @if(node.children?.length) {
-<div class="child">
+<div class="child-node">
   @for (child of node.children; track child) {
-  <app-child-node
+  <child-node
     [node]="child"
-    (removeEvent)="removeChildNode($event)"
-  ></app-child-node>
+    (removeEvent)="removeNodeEvent($event)"
+  ></child-node>
   }
 </div>
 }

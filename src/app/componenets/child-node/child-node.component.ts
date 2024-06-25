@@ -11,7 +11,7 @@ import {
 import { NodeModel } from '../../models/node.model';
 import { NodeHelperService } from '../../services/node-helper.service';
 @Component({
-  selector: 'app-child-node',
+  selector: 'child-node',
   templateUrl: './child-node.component.html',
   styleUrls: ['./child-node.component.scss'],
 })
@@ -52,19 +52,18 @@ export class ChildNodeComponent implements OnInit {
   /**
    * to callthe remove event of the parent node
    */
-  removeNode(): void {
+  removeThisNode(): void {
     this.removeEvent.emit(this.node.id);
   }
   /**
    * to filter out all the child nodes
    * @param event
    */
-  removeChildNode(event: any): void {
-    if (!this.node.children) {
-      this.node.children = [];
+  removeNodeEvent(event: any): void {
+    if (this.node?.children) {
+      this.node.children = this.node.children.filter(
+        (child) => child.id !== event
+      );
     }
-    this.node.children = this.node.children.filter(
-      (child) => child.id !== event
-    );
   }
 }

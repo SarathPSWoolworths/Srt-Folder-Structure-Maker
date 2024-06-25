@@ -3,7 +3,7 @@ import { NodeHelperService } from '../../services/node-helper.service';
 import { NodeModel } from '../../models/node.model';
 
 @Component({
-  selector: 'app-root-node',
+  selector: 'root-node',
   templateUrl: './root-node.component.html',
   styleUrls: ['./root-node.component.scss'],
 })
@@ -15,7 +15,7 @@ export class RootNodeComponent implements OnInit {
   ngOnInit(): void {}
 
   /**
-   * to add root node
+   * to add folder to root node
    * */
   addNode(): void {
     this.nodes.push({
@@ -28,7 +28,9 @@ export class RootNodeComponent implements OnInit {
    * to filter out all the child nodes
    * @param event
    */
-  removeChildNode(event: any): void {
-    this.nodes = this.nodes.filter((node) => node.id !== event);
+  removeNode(event: any): void {
+    if (this.nodes) {
+      this.nodes = this.nodes.filter((node) => node.id !== event);
+    }
   }
 }
