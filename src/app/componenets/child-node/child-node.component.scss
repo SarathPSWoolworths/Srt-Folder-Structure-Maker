@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   outline: none;
-  margin: 2px;
+  margin: 8px 0px;
 
   &:hover {
     outline: 1px solid #263238;
@@ -80,7 +80,7 @@
 }
 
 .child-node {
-  padding-left: 28px;
+  padding-left: 24px;
 
   .node-container {
     border-left: 2px solid #263238;
