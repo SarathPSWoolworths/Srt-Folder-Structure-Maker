@@ -1,12 +1,15 @@
 .root {
   display: flex;
   justify-content: space-between;
+
   .root-json {
     padding: 5px;
   }
+
   .root-nodes {
     padding: 20px;
   }
+
   button {
     background: #263238;
     padding: 10px 20px;
