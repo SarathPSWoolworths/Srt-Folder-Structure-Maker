@@ -21,6 +21,7 @@
     <div class="node-items">
       <img
         class="button-img"
+        alt="file or folder icon"
         [src]="node.type === 'file' ? 'file-regular.svg' : 'folder-regular.svg'"
       />
       <span class="name">{{ node.name }}</span>
@@ -31,7 +32,7 @@
           title="add new node"
           (click)="addUnsetNode()"
         >
-          <img class="button-img" src="add-icon.svg" />
+          <img class="button-img" alt="add button" src="add-icon.svg" />
         </button>
         }
         <button
@@ -39,7 +40,7 @@
           title="delete this node"
           (click)="removeThisNode()"
         >
-          <img class="button-img" src="delete.svg" />
+          <img class="button-img" alt="delete button" src="delete.svg" />
         </button>
       </div>
     </div>
@@ -47,6 +48,7 @@
     <div class="node-items">
       <img
         class="button-img"
+        alt="file or folder icon"
         [src]="node.type === 'file' ? 'file-regular.svg' : 'folder-regular.svg'"
       />
       <input
@@ -61,14 +63,14 @@
         class="transparent"
         (click)="updateNodeName(nodeName.value)"
       >
-        <img class="button-img" src="tick.svg" />
+        <img class="button-img" alt="tick button" src="tick.svg" />
       </button>
       <button
         class="transparent"
         title="remove this node"
         (click)="removeThisNode()"
       >
-        <img class="button-img" src="close.svg" />
+        <img class="button-img" alt="cancel button" src="close.svg" />
       </button>
     </div>
 
